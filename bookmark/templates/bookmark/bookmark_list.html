@@ -1,0 +1,38 @@
+<div class="btn-group">
+    <a href="{% url 'add'%}" class="btn btn-info">Add Bookmark</a>
+</div>
+<!--href : 이동위함 -->
+<p></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Site</th>
+            <th scope="col">URL</th>
+            <th scope="col">Modify</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--오지랖/4장북마크/05 // 템플릿 문법 : html 태그가 아닌 부분이 나옴 -->
+        <!--model=bookmark다 . 밖에안씀 . list 주게되어잇음 -> 상세내용보기 들어가면 object라는 이름으로줌  -->
+        {% for bookmark in object_list %}
+        <tr>
+            <!--# = 현재페이지  / % url % : url template 태그 / pk=object.id-->
+            <td>{{forloop.counter}}</td>
+            <td><a href="{% url 'detail' pk=bookmark.id %}">{{bookmark.site_name}}</a></td>
+            <td><a href="{{bookmark.url}}" target="_blank">{{bookmark.url}}</a></td>
+
+            <td><a href="{% url 'update' pk=bookmark.id %}" class="btn btn-success btn-sm">Modify</a></td>
+            <td><a href="{% url 'delete' pk=bookmark.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+  <!-- { } : 기능 / {_{ .}+} : print -->
+ <!-- 전체 bookmarklist를 object list라고 갖고 왔고, for문을 사용해서 하나의 객체마다 북마크라는 이름으로 갖고옴
+   bookmark.site_name에서 bookmark : 이게 모델이라고 생각하면됨, 모델의 instance
+    / bookmark 모델의 instance 에는 url과 site_name 두가지가 존재했음 => .으로 이렇게 접근하면 출력가능-->
+          <!--두번째꺼 - url : 이동이 되야하니까, 실제 출력이 되야하므로! href 에 {{ 이거 }} 씀-->

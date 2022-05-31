@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Add" class="btn btn-info btn-sm">
+</form>
+</body>
+</html>
+
+<!--form action : 입력받은걸 어느페이지로 보내줄거냐, method : 입력받은 내용을 어떤형태로 보내줄거냐
+action - 장고에서는 빈 것 많음 /입력받는,처리하는 - 같은 페이지에서 하는경우 많아서 : 처리방식! -->
+<!-- as_p = p태그로 감싸주거나 테이블태그이용해서 폼목록 출력
+-->
+
